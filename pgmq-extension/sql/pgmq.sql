@@ -424,19 +424,19 @@ $$ LANGUAGE plpgsql;
 CREATE FUNCTION pgmq.drop_queue(queue_name TEXT, partitioned BOOLEAN DEFAULT FALSE)
 RETURNS BOOLEAN AS $$
 BEGIN
-    EXECUTE FORMAT(
-        $QUERY$
-        ALTER EXTENSION pgmq DROP TABLE pgmq.q_%s
-        $QUERY$,
-        queue_name
-    );
-
-    EXECUTE FORMAT(
-        $QUERY$
-        ALTER EXTENSION pgmq DROP TABLE pgmq.a_%s
-        $QUERY$,
-        queue_name
-    );
+--     EXECUTE FORMAT(
+--         $QUERY$
+--         ALTER EXTENSION pgmq DROP TABLE pgmq.q_%s
+--         $QUERY$,
+--         queue_name
+--     );
+--
+--     EXECUTE FORMAT(
+--         $QUERY$
+--         ALTER EXTENSION pgmq DROP TABLE pgmq.a_%s
+--         $QUERY$,
+--         queue_name
+--     );
 
     EXECUTE FORMAT(
         $QUERY$
@@ -539,13 +539,13 @@ BEGIN
     queue_name
   );
 
-  IF NOT pgmq._belongs_to_pgmq(FORMAT('q_%s', queue_name)) THEN
-      EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.q_%s', queue_name);
-  END IF;
-
-  IF NOT pgmq._belongs_to_pgmq(FORMAT('a_%s', queue_name)) THEN
-      EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.a_%s', queue_name);
-  END IF;
+--   IF NOT pgmq._belongs_to_pgmq(FORMAT('q_%s', queue_name)) THEN
+--       EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.q_%s', queue_name);
+--   END IF;
+--
+--   IF NOT pgmq._belongs_to_pgmq(FORMAT('a_%s', queue_name)) THEN
+--       EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.a_%s', queue_name);
+--   END IF;
 
   EXECUTE FORMAT(
     $QUERY$
@@ -605,13 +605,13 @@ BEGIN
     queue_name
   );
 
-  IF NOT pgmq._belongs_to_pgmq(FORMAT('q_%s', queue_name)) THEN
-      EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.q_%s', queue_name);
-  END IF;
-
-  IF NOT pgmq._belongs_to_pgmq(FORMAT('a_%s', queue_name)) THEN
-      EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.a_%s', queue_name);
-  END IF;
+--   IF NOT pgmq._belongs_to_pgmq(FORMAT('q_%s', queue_name)) THEN
+--       EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.q_%s', queue_name);
+--   END IF;
+--
+--   IF NOT pgmq._belongs_to_pgmq(FORMAT('a_%s', queue_name)) THEN
+--       EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.a_%s', queue_name);
+--   END IF;
 
   EXECUTE FORMAT(
     $QUERY$
@@ -711,13 +711,13 @@ BEGIN
     queue_name
   );
 
-  IF NOT pgmq._belongs_to_pgmq(FORMAT('q_%s', queue_name)) THEN
-      EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.q_%s', queue_name);
-  END IF;
-
-  IF NOT pgmq._belongs_to_pgmq(FORMAT('a_%s', queue_name)) THEN
-      EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.a_%s', queue_name);
-  END IF;
+--   IF NOT pgmq._belongs_to_pgmq(FORMAT('q_%s', queue_name)) THEN
+--       EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.q_%s', queue_name);
+--   END IF;
+--
+--   IF NOT pgmq._belongs_to_pgmq(FORMAT('a_%s', queue_name)) THEN
+--       EXECUTE FORMAT('ALTER EXTENSION pgmq ADD TABLE pgmq.a_%s', queue_name);
+--   END IF;
 
   EXECUTE FORMAT(
     $QUERY$
